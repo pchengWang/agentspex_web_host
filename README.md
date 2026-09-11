@@ -22,9 +22,27 @@ Open http://127.0.0.1:8000/ in a browser. No build step or backend is needed.
 
 GitHub Pages publishes `main` from `/ (root)`. The `.nojekyll` file preserves the plain static site. Push updates to `main` to publish them.
 
-Local asset paths are relative, so the site works at both the project Pages URL and the future custom domain. Media is committed as actual files, not Git LFS pointers. The original editor recording is retained separately; this repository contains its optimized delivery copy.
+Local asset paths are relative, so the site supports both the project Pages URL and the custom domain. Once the domain is configured, GitHub redirects the project Pages URL to it. Media is committed as actual files, not Git LFS pointers. The original editor recording is retained separately; this repository contains its optimized delivery copy.
 
-Set the custom domain through repository **Settings → Pages** before updating the domain's DNS. The custom domain has not yet been configured.
+### Custom domain
+
+GitHub Pages is configured to use `agentspex.ai`, and the root `CNAME` file preserves this setting. DNS migration at Namecheap and HTTPS activation are pending as of September 11, 2026.
+
+In Namecheap, open **Domain List → Manage → Advanced DNS → Host Records**. Replace the old `@` and `www` records pointing to `149.165.151.10` with the following records, using **Automatic** TTL:
+
+| Type | Host | Value |
+| --- | --- | --- |
+| A Record | @ | 185.199.108.153 |
+| A Record | @ | 185.199.109.153 |
+| A Record | @ | 185.199.110.153 |
+| A Record | @ | 185.199.111.153 |
+| CNAME Record | www | pchengwang.github.io |
+
+Remove conflicting A, AAAA, CNAME, or URL Redirect records for these two hosts, while keeping unrelated records such as MX and TXT. The `www` target must not include a protocol or repository path. Keep the current Namecheap nameservers; URL forwarding is unnecessary. GitHub handles the `www` redirect to the apex domain.
+
+After DNS has propagated and GitHub has issued the domain certificate, enable **Enforce HTTPS** in repository **Settings → Pages**. Check the apex domain, the `www` redirect, and the media over HTTPS.
+
+References: [Namecheap setup instructions](https://www.namecheap.com/support/knowledgebase/article.aspx/9645/2208/how-do-i-link-my-domain-to-github-pages/) and [GitHub custom domain documentation](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site).
 
 ## Files
 
