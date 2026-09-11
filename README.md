@@ -3,7 +3,7 @@
 Static project page for **AgentSPEX: An Agent SPecification and EXecution Language**.
 
 - GitHub Pages: https://pchengwang.github.io/agentspex_web_host/
-- Project domain (pending DNS migration): https://agentspex.ai/
+- Project domain: https://agentspex.ai/
 - Paper: https://arxiv.org/abs/2604.13346
 - Code: https://github.com/ScaleML/AgentSPEX
 - Local setup: https://github.com/ScaleML/AgentSPEX#quick-start
@@ -26,9 +26,9 @@ Local asset paths are relative, so the site supports both the project Pages URL 
 
 ### Custom domain
 
-GitHub Pages is configured to use `agentspex.ai`, and the root `CNAME` file preserves this setting. DNS migration at Namecheap and HTTPS activation are pending as of September 11, 2026.
+GitHub Pages is configured to use `agentspex.ai`, and the root `CNAME` file preserves this setting. DNS migration at Namecheap was verified on September 11, 2026. HTTPS activation is awaiting GitHub's domain certificate.
 
-In Namecheap, open **Domain List → Manage → Advanced DNS → Host Records**. Replace the old `@` and `www` records pointing to `149.165.151.10` with the following records, using **Automatic** TTL:
+The current records in Namecheap, under **Domain List → Manage → Advanced DNS → Host Records**, use **Automatic** TTL:
 
 | Type | Host | Value |
 | --- | --- | --- |
@@ -38,7 +38,7 @@ In Namecheap, open **Domain List → Manage → Advanced DNS → Host Records**.
 | A Record | @ | 185.199.111.153 |
 | CNAME Record | www | pchengwang.github.io |
 
-Remove conflicting A, AAAA, CNAME, or URL Redirect records for these two hosts, while keeping unrelated records such as MX and TXT. The `www` target must not include a protocol or repository path. Keep the current Namecheap nameservers; URL forwarding is unnecessary. GitHub handles the `www` redirect to the apex domain.
+Keep these records free of conflicting A, AAAA, CNAME, or URL Redirect entries. Preserve unrelated records such as MX and TXT. The `www` target must not include a protocol or repository path. The domain uses Namecheap nameservers; URL forwarding is unnecessary. GitHub handles the `www` redirect to the apex domain.
 
 After DNS has propagated and GitHub has issued the domain certificate, enable **Enforce HTTPS** in repository **Settings → Pages**. Check the apex domain, the `www` redirect, and the media over HTTPS.
 
