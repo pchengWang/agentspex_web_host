@@ -26,7 +26,7 @@ Local asset paths are relative, so the site supports both the project Pages URL 
 
 ### Custom domain
 
-GitHub Pages is configured to use `agentspex.ai`, and the root `CNAME` file preserves this setting. DNS migration at Namecheap was verified on September 11, 2026. HTTPS activation is awaiting GitHub's domain certificate.
+GitHub Pages is configured to use `agentspex.ai`, and the root `CNAME` file preserves this setting. DNS migration and HTTPS activation were completed on September 11, 2026. The certificate covers both `agentspex.ai` and `www.agentspex.ai`, and **Enforce HTTPS** is enabled.
 
 The current records in Namecheap, under **Domain List → Manage → Advanced DNS → Host Records**, use **Automatic** TTL:
 
@@ -40,7 +40,7 @@ The current records in Namecheap, under **Domain List → Manage → Advanced DN
 
 Keep these records free of conflicting A, AAAA, CNAME, or URL Redirect entries. Preserve unrelated records such as MX and TXT. The `www` target must not include a protocol or repository path. The domain uses Namecheap nameservers; URL forwarding is unnecessary. GitHub handles the `www` redirect to the apex domain.
 
-After DNS has propagated and GitHub has issued the domain certificate, enable **Enforce HTTPS** in repository **Settings → Pages**. Check the apex domain, the `www` redirect, and the media over HTTPS.
+Keep **Enforce HTTPS** enabled in repository **Settings → Pages**. The canonical site is `https://agentspex.ai/`; HTTP requests, `www`, and the original project Pages URL redirect to it.
 
 References: [Namecheap setup instructions](https://www.namecheap.com/support/knowledgebase/article.aspx/9645/2208/how-do-i-link-my-domain-to-github-pages/) and [GitHub custom domain documentation](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site).
 
